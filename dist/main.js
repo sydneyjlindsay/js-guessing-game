@@ -26,14 +26,20 @@ do {
 	if (numGuess === numRandom) {
 		complete = true;
 		}
-	else {
-	yield game.say("Guess again!");
+	else if (numGuess > numRandom) {
+		yield game.say("Too high! Guess again.");
+		}
+		else {
+			yield game.say("Too low! Guess again");
 		}
  } while (complete === false);
 
 	if (numGuess === numRandom) {
 		yield game.say("You guessed correctly, you win!");
+		var playAgain = yield game.choose("Would you like to play again?", "Yes", "No");
+		console.log(playAgain);
 	}
+
 }
 
 //too low too high; if they guess correctly, start the game over 
